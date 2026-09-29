@@ -16,7 +16,7 @@ public class Expense {
         this.category = category;
     }
 
-    public long getid(){
+    public long getId(){
         return id;
     }
 
@@ -30,6 +30,29 @@ public class Expense {
 
     public String getCategory() {
         return category;
+    }
+
+    //setters for spring to read the post request and to create java object
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    //overriding the toString function to print the object
+    @Override 
+    public String toString(){
+        return "New expense: " + title + "of " + amount ;
     }
 
 }
