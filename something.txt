@@ -1,0 +1,119 @@
+i was learning backend i mean i just started, this was the plan Java basics
+   ↓
+Spring Boot
+   ↓
+REST API
+   ↓
+HTTP / JSON
+   ↓
+Database (PostgreSQL)
+   ↓
+JPA / Hibernate
+   ↓
+Authentication
+   ↓
+Testing
+   ↓
+Build JAR
+   ↓
+Linux server
+   ↓
+AWS EC2
+   ↓
+Nginx
+   ↓
+Domain + HTTPS
+   ↓
+Docker (later) for now i just created get request and now we gotta go with post request, i have created the project using spring intitiazr, expense-tracker, this is expense class {package com.example.expense_tracker.entity;
+import java.math.BigDecimal;
+
+public class Expense {
+    private long id;
+    private String title;
+    private BigDecimal amount;
+    private String category;
+
+    public Expense(){}
+
+    public Expense(long id, String title, BigDecimal amount, String category){
+        this.id = id;
+        this.title = title;
+        this.amount = amount;
+        this.category = category;
+    }
+
+    public long getId(){
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    //setters for spring to read the post request and to create java object
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    //overriding the toString function to print the object
+    @Override 
+    public String toString(){
+        return "New expense: " + title + "of " + amount ;
+    }
+
+}
+} and this is expense controller {package com.example.expense_tracker.controller;
+
+import java.math.BigDecimal;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+//post libraries
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+import org.springframework.web.bind.annotation.RestController;
+import com.example.expense_tracker.entity.Expense;
+
+
+@RestController
+public class ExpenseController{
+    
+    @GetMapping("/api/expenses")
+    public Expense getExpenses(){
+        return new Expense(
+            1L,
+            "Lunch",
+            new BigDecimal("250.00"),
+            "FOOD"  
+        );
+    }
+
+    @PostMapping("/api/expenses")
+    public Expense postExpense(@RequestBody Expense expense){
+        System.out.println(expense);
+        return expense;
+    }
+}} we got C:\Poojith\java\backend\expense-tracker\src\main\java\com\example\expense_tracker\controller\ExpenseController.java
+C:\Poojith\java\backend\expense-tracker\src\main\java\com\example\expense_tracker\entity\Expense.java as of now
