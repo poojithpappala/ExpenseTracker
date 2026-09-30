@@ -1,16 +1,26 @@
 package com.example.expense_tracker.entity;
 import java.math.BigDecimal;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+@Entity
 public class Expense {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
     private String title;
     private BigDecimal amount;
     private String category;
 
     public Expense(){}
 
-    public Expense(long id, String title, BigDecimal amount, String category){
-        this.id = id;
+    public Expense( String title, BigDecimal amount, String category){
+        
         this.title = title;
         this.amount = amount;
         this.category = category;
