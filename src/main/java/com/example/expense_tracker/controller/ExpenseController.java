@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 //importing Expense services
 import com.example.expense_tracker.services.ExpenseService;
 
+//importing @Valid
+import jakarta.validation.Valid;
+
 @RestController
 public class ExpenseController{
     private final ExpenseService expenseService;
@@ -49,7 +52,7 @@ public class ExpenseController{
     //POST
     @PostMapping("/api/expenses")
     @ResponseStatus(HttpStatus.CREATED)
-    public Expense postExpenses(@RequestBody Expense expense){
+    public Expense postExpenses(@Valid @RequestBody Expense expense){
         System.out.println("a new post has been made");
         return expenseService.postExpense(expense);
     }
@@ -62,9 +65,8 @@ public class ExpenseController{
     }
 
     //PUT/UPDATE
-
     @PutMapping("/api/expenses/{id}")
-    public Expense updateExpense(@RequestBody Expense expense, @PathVariable long id){
+    public Expense updateExpense(@Valid @RequestBody Expense expense, @PathVariable long id){
         return expenseService.updateExpense(expense, id);
     }
     

@@ -19,7 +19,7 @@ public class ExpenseService{
     }
 
     public Expense getExpense(long id){
-        return expenseRepository.findById(id).orElseThrow();
+        return expenseRepository.findById(id).orElseThrow(() -> new RuntimeException("there's no expense with this id"));
     }
 
     //post methods
