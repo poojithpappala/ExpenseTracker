@@ -47,4 +47,8 @@ public class User implements UserDetails{
         return this.accountNonLocked;
     }
 
+    @Override
+    public String getPassword() {
+        return this.password; // Returns your hashed entity password to Spring Security
+    }
 }

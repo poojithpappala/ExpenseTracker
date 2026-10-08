@@ -18,7 +18,7 @@ public class CustomUserDetailsService implements UserDetailsService{
     //we are returning User details, that means returning an interface tells java that we are returning an object which is implementing that interface
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
-        return userRepository.findbyEmail(email)
+        return userRepository.findByEmail(email)
                              .orElseThrow(() -> new UsernameNotFoundException("User Not found with email -> " + email));
     }
 }
